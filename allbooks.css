@@ -1,0 +1,44 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.nav{
+    height: 5rem;
+    width: 100%;
+    border: 2px solid black;
+    display: flex;
+    align-items: center;
+}
+
+.nav pre{
+    font-size: 1.3rem;
+    margin-left: 10%;
+}
+
+.sidenav{
+    height: 80vh;
+    width: 10vw;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-brands{
+    font-size: 3rem;
+    margin: 30%;
+    cursor: pointer;
+}
+
+.fa-solid{
+    font-size: 3rem;
+    margin: 30%;
+    cursor: pointer;
+}
+
+.nav2{
+    
+}

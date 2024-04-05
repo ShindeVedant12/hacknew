@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+body{
+    background: url(coep.jpg);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+.pass{
+    background-color: #eee;
+    box-shadow:  0 15px 100px rgb(81, 75, 75) ;
+    height: 400px;
+    width: 500px;
+    text-align: center;
+}
+
+.pass pre{
+    margin-top: 20px;
+    font-weight: 500;
+}
+
+.pass h2{
+    margin-top: 60px;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.email{
+    height: 30px;
+    width: 400px;
+    border-radius: 8px;
+    margin-top: 60px;
+    border: none;
+    color: black;
+    padding-left: 12px;
+}
+
+.OTP{
+    height: 30px;
+    width: 400px;
+    border-radius: 8px;
+    margin-top: 20px;
+    border: none;
+    color: black;
+    padding-left: 12px; 
+}
+
+/* .pass input placeholder{
+    margin-left: 100px;
+} */
+
+.pass button{
+    margin-top: 50px;
+    background-color: #0D1717;
+    color: whitesmoke;
+    width: 180px;
+    height: 35px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: 2px solid #0D1717;
+}
+
+.pass button:hover{
+    background-color: white;
+    color: black;
+}
