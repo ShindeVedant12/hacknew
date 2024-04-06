@@ -68,6 +68,9 @@ document.getElementById("login").addEventListener('click',(e) =>{
     if(email_login == "admin2024@gmail.com"){
       window.location.href="admin.html"
     }
+    else{
+      window.location.href="ui.html"
+    }
      
     // sessionStorage.setItem("cur_email",email_login)
     // user_ref = database.ref("users/" + )
