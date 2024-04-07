@@ -31,7 +31,7 @@ const database = getDatabase();
             <td>${order.user}</td>
             <td>${order.doi}</td>
             <td>${order.dor}</td>
-            <td>${order.status}</td>
+            <td class="${order.status === 'Due' ? 'danger' : order.status === 'available' ? 'success' : 'primary'}">${order.status}</td>
             <td class="primary">Details</td>
         `;
         tr.innerHTML = trContent;
