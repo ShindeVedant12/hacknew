@@ -1,3 +1,4 @@
+
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
 import { getDatabase,ref,child,get,update} from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
 // TODO: Add SDKs for Firebase products that you want to use
@@ -19,10 +20,28 @@ const database = getDatabase();
   get(child(ref(database),'books/'))
   .then((snapshot)=>{
     var Orders = snapshot.val();
-    return Orders
+    var order;
+    var cnt = 1;
+    for (order in Orders){
+        order = Orders[cnt]
+        const tr = document.createElement('tr');
+        const trContent = `
+            <td>${order.id}</td>
+            <td>${order.name}</td>
+            <td>${order.user}</td>
+            <td>${order.doi}</td>
+            <td>${order.dor}</td>
+            <td>${order.status}</td>
+            <td class="primary">Details</td>
+        `;
+        tr.innerHTML = trContent;
+        document.querySelector('table tbody').appendChild(tr);
+        cnt++;
+    };
 })
 .catch((error) => {
   const errorCode = error.code;
   const errorMessage = error.message;
   alert(errorMessage);})
 
+  
