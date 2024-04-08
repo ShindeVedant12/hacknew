@@ -37,6 +37,8 @@ auth.onAuthStateChanged((user) => {
             document.getElementById('name').innerHTML = username;
             document.getElementById('email').innerHTML = useremail;
             document.getElementById('status').innerHTML = userstatus;
+            document.getElementById('name2').innerHTML = username;
+            document.getElementById('name3').innerHTML = username;
 
 
             return username;
