@@ -21,21 +21,33 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase();
 const user = auth.currentUser;
-const userId = user.uid;
-const userRef = ref(database, 'users/' + userId);
 
-get(userRef).then((snapshot) => {
-    const userData = snapshot.val();
-    const username = userData.username;
-    const useremail = userData.email;
-    const userstatus = userData.status;
+auth.onAuthStateChanged((user) => {
+    if (user) {
+        const userId = user.uid;
+        const database = getDatabase();
+        const userRef = ref(database, 'users/' + userId);
 
-    document.getElementById('name').innerHTML = username;
-    document.getElementById('email').innerHTML = useremail;
-    document.getElementById('name').innerHTML = userstatus;
+        get(userRef).then((snapshot) => {
+            const userData = snapshot.val();
+            const username = userData.username;
+            const useremail = userData.email;
+            const userstatus = userData.status;
 
-    return username;
-})
+            document.getElementById('name').innerHTML = username;
+            document.getElementById('email').innerHTML = useremail;
+            document.getElementById('status').innerHTML = userstatus;
+
+
+            return username;
+        }).catch((error) => {
+            console.error("Error retrieving user data:", error);
+        });
+    } else {
+        console.log("No user signed in.");
+    }
+});
+
 
 
 
