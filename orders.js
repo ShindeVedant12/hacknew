@@ -34,16 +34,25 @@ function convertMillisecondsToDate(milliseconds) {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase();
+
   get(child(ref(database),'books/'))
   .then((snapshot)=>{
     var Orders = snapshot.val();
     var order;
     var cnt = 1;
+    var cnti = 0;
+    var cntd = 0;
     for (order in Orders){
         order = Orders[cnt]
         const tr = document.createElement('tr');
         var date = convertMillisecondsToDate(order.doi)
         var date2 = convertMillisecondsToDate(order.doi + 86400000 * 7)
+        if(order.status == "issued"){
+          cnti++;
+        }
+        if(order.status == "Due"){
+          cntd++;
+        }
         
         const trContent = `
             <td>${order.id}</td>
@@ -56,6 +65,10 @@ const database = getDatabase();
         tr.innerHTML = trContent;
         document.querySelector('table tbody').appendChild(tr);
         cnt++;
+        document.getElementById('totalqty').innerHTML = cnt - 1;
+        document.getElementById('issueqty').innerHTML = cnti;
+        document.getElementById('dueqty').innerHTML = cntd;
+        
     };
 })
 .catch((error) => {
