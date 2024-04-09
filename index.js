@@ -35,9 +35,9 @@ document.getElementById("register").addEventListener('click',(e) =>{
     set(ref(database, 'users/' + user.uid), {
       username: username,
       email: email,
-      status : "Online",
-      book1 : 0,
-      book2 : 0
+      status : "Online" ,
+      book1 : "" ,
+      book2 : ""
     });
     
     Swal.fire({
