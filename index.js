@@ -36,8 +36,8 @@ document.getElementById("register").addEventListener('click',(e) =>{
       username: username,
       email: email,
       status : "Online" ,
-      book1 : "" ,
-      book2 : ""
+      book1 : 0 ,
+      book2 : 0
     });
     
     Swal.fire({
