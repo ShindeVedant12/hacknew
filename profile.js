@@ -71,7 +71,7 @@ auth.onAuthStateChanged((user) => {
                         const trContent = `
                             <td>${order.id}</td>
                             <td>${order.name}</td>
-                            <td>${order.user}</td>
+                            
                             <td>${date}</td>
                             <td>${date2}</td>
                             <td class="${order.status === 'Due' ? 'danger' : order.status === 'available' ? 'success' : 'primary'}">${order.status}</td>
@@ -95,7 +95,7 @@ auth.onAuthStateChanged((user) => {
                             const trContent = `
                                 <td>${order.id}</td>
                                 <td>${order.name}</td>
-                                <td>${order.user}</td>
+                                
                                 <td>${date}</td>
                                 <td>${date2}</td>
                                 <td class="${order.status === 'Due' ? 'danger' : order.status === 'available' ? 'success' : 'primary'}">${order.status}</td>
