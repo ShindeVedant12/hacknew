@@ -35,7 +35,7 @@ document.getElementById("register").addEventListener('click',(e) =>{
     set(ref(database, 'users/' + user.uid), {
       username: username,
       email: email,
-      ID: user.uid,
+      ID: Math.floor(Math.random() * 1000);,
       status : "Online",
       book1 : 0,
       book2 : 0
