@@ -50,7 +50,7 @@ const database = getDatabase();
             <td>${order.id}</td>
             <td>${order.name}</td>
             <td class="${order.status === 'Due' ? 'danger' : order.status === 'available' ? 'success' : 'primary'}">${order.status}</td>
-            <td><button>issue</button></td>
+            <td><button class = "issue">issue</button></td>
             
         `;
         tr.innerHTML = trContent;
