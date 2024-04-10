@@ -45,7 +45,7 @@ const database = getDatabase();
         
         var date = convertMillisecondsToDate(order.doi)
         var date2 = convertMillisecondsToDate(order.doi + 86400000 * 7)
-        if(order.status == 'available'){
+        if(order.status === 'available'){
           const tr = document.createElement('tr');
           const trContent = `
               <td>${order.id}</td>
