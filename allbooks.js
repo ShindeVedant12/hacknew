@@ -31,7 +31,8 @@ function convertMillisecondsToDate(milliseconds) {
     return formattedDate;
 }
 
-
+ const app = initializeApp(firebaseConfig);
+ const database = getDatabase(app);
 get(child(ref(database),'books/'))
   .then((snapshot)=>{
     var Orders = snapshot.val();
