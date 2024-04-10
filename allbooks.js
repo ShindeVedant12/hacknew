@@ -56,8 +56,9 @@ const database = getDatabase();
           `;
           tr.innerHTML = trContent;
           document.querySelector('table tbody').appendChild(tr);
-          cnt++;
-    }};
+          
+    }
+    cnt++;};
 })
 .catch((error) => {
   const errorCode = error.code;
