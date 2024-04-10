@@ -45,18 +45,18 @@ const database = getDatabase();
         const tr = document.createElement('tr');
         var date = convertMillisecondsToDate(order.doi)
         var date2 = convertMillisecondsToDate(order.doi + 86400000 * 7)
-        
-        const trContent = `
-            <td>${order.id}</td>
-            <td>${order.name}</td>
-            <td class="${order.status === 'Due' ? 'danger' : order.status === 'available' ? 'success' : 'primary'}">${order.status}</td>
-            <td><button class = "issue">issue</button></td>
-            
-        `;
-        tr.innerHTML = trContent;
-        document.querySelector('table tbody').appendChild(tr);
-        cnt++;
-    };
+        if(order.status == 'available'){
+          const trContent = `
+              <td>${order.id}</td>
+              <td>${order.name}</td>
+              <td class="${order.status === 'Due' ? 'danger' : order.status === 'available' ? 'success' : 'primary'}">${order.status}</td>
+              <td><button class = "issue">issue</button></td>
+              
+          `;
+          tr.innerHTML = trContent;
+          document.querySelector('table tbody').appendChild(tr);
+          cnt++;
+    }};
 })
 .catch((error) => {
   const errorCode = error.code;
