@@ -50,5 +50,9 @@ database.on('books', function(snapshot){
           document.querySelector('table tbody').appendChild(tr);
           
     }
+  });
+},function(error){
+  console.log("errpr hai");
+});
     
   
