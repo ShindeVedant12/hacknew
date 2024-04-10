@@ -42,10 +42,11 @@ const database = getDatabase();
     var cnt = 1;
     for (order in Orders){
         order = Orders[cnt]
-        const tr = document.createElement('tr');
+        
         var date = convertMillisecondsToDate(order.doi)
         var date2 = convertMillisecondsToDate(order.doi + 86400000 * 7)
         if(order.status == 'available'){
+          const tr = document.createElement('tr');
           const trContent = `
               <td>${order.id}</td>
               <td>${order.name}</td>
