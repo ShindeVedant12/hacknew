@@ -34,23 +34,15 @@ function convertMillisecondsToDate(milliseconds) {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase();
-
-  get(child(ref(database),'books/'))
-  .then((snapshot)=>{
-    var Orders = snapshot.val();
-    var order;
-    var cnt = 1;
-    for (order in Orders){
-        order = Orders[cnt]
-        
-        var date = convertMillisecondsToDate(order.doi)
-        var date2 = convertMillisecondsToDate(order.doi + 86400000 * 7)
-        if(order.status == 'available'){
+database.on('books', function(snapshot){
+  snapshot.forEach(function(childSnap){
+    var status=childSnap.val().status;
+     if(status == 'available'){
           const tr = document.createElement('tr');
           const trContent = `
               <td>${order.id}</td>
               <td>${order.name}</td>
-              <td class="${order.status === 'Due' ? 'danger' : order.status === 'available' ? 'success' : 'primary'}">${order.status}</td>
+              <td class="${status === 'Due' ? 'danger' : status === 'available' ? 'success' : 'primary'}">${status}</td>
               <td><button class = "issue">issue</button></td>
               
           `;
@@ -58,11 +50,5 @@ const database = getDatabase();
           document.querySelector('table tbody').appendChild(tr);
           
     }
-    cnt++;};
-})
-.catch((error) => {
-  const errorCode = error.code;
-  const errorMessage = error.message;
-  alert(errorMessage);})
-
+    
   
