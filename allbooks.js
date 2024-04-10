@@ -34,25 +34,25 @@ function convertMillisecondsToDate(milliseconds) {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase();
-database.on('books', function(snapshot){
-  snapshot.forEach(function(childSnap){
-    var status=childSnap.val().status;
-     if(status == 'available'){
-          const tr = document.createElement('tr');
-          const trContent = `
-              <td>${order.id}</td>
-              <td>${order.name}</td>
-              <td class="${status === 'Due' ? 'danger' : status === 'available' ? 'success' : 'primary'}">${status}</td>
-              <td><button class = "issue">issue</button></td>
-              
-          `;
-          tr.innerHTML = trContent;
-          document.querySelector('table tbody').appendChild(tr);
-          
+database.ref('books').on('value', function(snapshot) {
+  snapshot.forEach(function(childSnap) {
+    var book = childSnap.val();
+    var status = book.status;
+
+    if (status === 'available') {
+      const tr = document.createElement('tr');
+      const trContent = `
+        <td>${childSnap.key}</td>
+        <td>${book.name}</td>
+        <td class="${status === 'Due' ? 'danger' : status === 'available' ? 'success' : 'primary'}">${status}</td>
+        <td><button class="issue">Issue</button></td>
+      `;
+      tr.innerHTML = trContent;
+      document.querySelector('table tbody').appendChild(tr);
     }
   });
-},function(error){
-  console.log("errpr hai");
+}, function(error) {
+  console.log("Error occurred:", error);
 });
-    
+
   
