@@ -42,7 +42,7 @@ get(child(ref(database),'books/'))
         
         var date = convertMillisecondsToDate(order.doi)
         var date2 = convertMillisecondsToDate(order.doi + 86400000 * 7)
-        if(order.status == 'available'){
+        
           const tr = document.createElement('tr');
           const trContent = `
               <td>${order.id}</td>
@@ -54,7 +54,7 @@ get(child(ref(database),'books/'))
           tr.innerHTML = trContent;
           document.querySelector('table tbody').appendChild(tr);
           
-    }
+    
     cnt++;};
 })
 .catch((error) => {
