@@ -31,13 +31,15 @@ function convertMillisecondsToDate(milliseconds) {
     return formattedDate;
 }
 
-// Initialize Firebase
+
+
 const app = initializeApp(firebaseConfig);
-const database = getDatabase();
-database.ref('books').on('value', function(snapshot) {
-  snapshot.forEach(function(childSnap) {
-    var book = childSnap.val();
-    var status = book.status;
+const database = getDatabase(app);
+const booksRef = ref(database, 'books');
+onValue(booksRef, (snapshot) => {
+  snapshot.forEach((childSnap) => {
+    const book = childSnap.val();
+    const status = book.status;
 
     if (status === 'available') {
       const tr = document.createElement('tr');
@@ -54,5 +56,6 @@ database.ref('books').on('value', function(snapshot) {
 }, function(error) {
   console.log("Error occurred:", error);
 });
+// Initialize Firebase
 
   
